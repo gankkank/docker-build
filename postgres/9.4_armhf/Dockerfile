@@ -1,5 +1,7 @@
-From resin/rpi-raspbian
+FROM resin/armv7hf-debian-qemu
 MAINTAINER Jimmy Yang <gankkank@gmail.com>
+
+RUN [ "cross-build-start" ]
 
 RUN apt-get update && \
   apt-get install -y nginx git vim
@@ -29,3 +31,5 @@ ENTRYPOINT ["/docker-entrypoint.sh"]
 
 EXPOSE 5432
 CMD ["postgres"]
+
+RUN [ "cross-build-end" ]  
